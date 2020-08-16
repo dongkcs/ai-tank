@@ -15,29 +15,33 @@ import java.awt.*;
 @Data
 @AllArgsConstructor
 public class Tank {
-    private int x,y;
+    private int x, y;
     private Dir dir = Dir.DOWN;
     private static final int SPEED = 5;
 
-    public static int WIDTH=ResourceMgr.tankD.getWidth();
-    public static int HEIGHT=ResourceMgr.tankD.getHeight();
+    public static int WIDTH = ResourceMgr.tankD.getWidth();
+    public static int HEIGHT = ResourceMgr.tankD.getHeight();
 
     private boolean moving = false;
-    private TankFrame tf= null;
+    private boolean living = true;
+    private TankFrame tf = null;
 
     public void paint(Graphics g) {
-        switch(dir){
+        if (!living) {
+            tf.enemy.remove(this);
+        }
+        switch (dir) {
             case LEFT:
-                g.drawImage(ResourceMgr.tankL,x,y,null);
+                g.drawImage(ResourceMgr.tankL, x, y, null);
                 break;
             case UP:
-                g.drawImage(ResourceMgr.tankU,x,y,null);
+                g.drawImage(ResourceMgr.tankU, x, y, null);
                 break;
             case RIGHT:
-                g.drawImage(ResourceMgr.tankR,x,y,null);
+                g.drawImage(ResourceMgr.tankR, x, y, null);
                 break;
             case DOWN:
-                g.drawImage(ResourceMgr.tankD,x,y,null);
+                g.drawImage(ResourceMgr.tankD, x, y, null);
                 break;
             default:
                 break;
@@ -54,30 +58,35 @@ public class Tank {
     }
 
     private void move() {
-        if(!moving){return;}
-        switch(dir){
+        if (!moving) {
+            return;
+        }
+        switch (dir) {
             case LEFT:
-                x-=SPEED;
+                x -= SPEED;
                 break;
             case UP:
-                y-=SPEED;
+                y -= SPEED;
                 break;
             case RIGHT:
-                x+=SPEED;
+                x += SPEED;
                 break;
             case DOWN:
-                y+=SPEED;
+                y += SPEED;
                 break;
             default:
                 break;
         }
     }
 
-    public void fire()
-    {
+    public void fire() {
 
-        int bX = this.x + Tank.WIDTH/2-Bullet.WIDTH/2;
-        int bY = this.y + Tank.HEIGHT/2-Bullet.HEIGHT/2;
-        tf.bullets.add(new Bullet(bX,bY,this.dir,this.tf));
+        int bX = this.x + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
+        int bY = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
+        tf.bullets.add(new Bullet(bX, bY, this.dir, this.tf));
+    }
+
+    public void die() {
+        this.living = false;
     }
 }
