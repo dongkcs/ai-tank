@@ -17,10 +17,10 @@ import java.util.List;
  * @description:
  */
 public class TankFrame extends Frame {
-    Tank myTank = new Tank(200,400,Dir.DOWN,this);
+    Tank myTank = new Tank(200,400,Dir.DOWN,Group.GOOD,this);
     List <Bullet> bullets =new ArrayList<>();
     List<Tank> enemy = new ArrayList<>();
-    Bullet b= new Bullet(300, 300,Dir.DOWN,this);
+    Bullet b= new Bullet(300, 300,Dir.DOWN,Group.BAD,this);
     static final int GAME_WIDTH=800,GAME_HEIGHT=600;
     public TankFrame() {
         setSize(GAME_WIDTH, GAME_HEIGHT);
