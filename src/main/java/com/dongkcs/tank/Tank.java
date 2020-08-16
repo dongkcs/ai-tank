@@ -121,7 +121,7 @@ public class Tank {
         int bY = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
         tf.bullets.add(new Bullet(bX, bY, this.dir, this.group,this.tf));
         if(this.group==Group.GOOD){
-            new Thread(()->new Audio("audio/explode.wav").play()).start();
+            new Thread(()->new Audio("audio/tankFire.wav").play()).start();
         }
     }
 

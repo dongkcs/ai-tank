@@ -94,20 +94,24 @@ public class TankFrame extends Frame {
             switch (key) {
                 case KeyEvent.VK_LEFT:
                     bL = true;
+                    setMainTrankDir();
                     break;
                 case KeyEvent.VK_UP:
                     bU = true;
+                    setMainTrankDir();
                     break;
                 case KeyEvent.VK_RIGHT:
                     bR = true;
+                    setMainTrankDir();
                     break;
                 case KeyEvent.VK_DOWN:
                     bD = true;
+                    setMainTrankDir();
                     break;
                 default:
                     break;
             }
-            setMainTrankDir();
+            new Thread(()->new Audio("audio/tankMove.wav").play()).start();
         }
 
         @Override
@@ -136,7 +140,7 @@ public class TankFrame extends Frame {
                 default:
                     break;
             }
-            setMainTrankDir();
+
         }
         private void setMainTrankDir() {
 

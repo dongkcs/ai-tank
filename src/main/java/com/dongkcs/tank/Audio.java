@@ -89,7 +89,7 @@ public class Audio {
 
 	public static void main(String[] args) {
 		// Audio a = new Audio("audio/explode.wav");
-		Audio a = new Audio("audio/explode.wav");
+		Audio a = new Audio("audio/tankMove.wav");
 		a.play();
 
 	}
