@@ -2,31 +2,32 @@ package com.dongkcs.tank;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 
 import java.awt.*;
 
 /**
  * @author dongkcs
  * @version 1.0
- * @date 2020/8/16 15:14
+ * @date 2020/8/16 15:45
  * @description:
  */
 @Data
 @AllArgsConstructor
-public class Tank {
+public class Bullet {
+    private static final int SPEED=1;
+    private static int WIDTH=30,HEIGHT=30;
     private int x,y;
-    private Dir dir=Dir.DOWN;
-    private static final int SPEED=5;
-    private boolean moving =false;
+    private Dir dir;
 
     public void paint(Graphics g) {
-        g.fillRect(x,y,50,50);
-       move();
+        Color c = g.getColor();
+        g.setColor(Color.RED);
+        g.fillOval(x,y,WIDTH,HEIGHT);
+        g.setColor(c);
+        move();
     }
 
     private void move() {
-        if(!moving){return;}
         switch(dir){
             case LEFT:
                 x-=SPEED;
