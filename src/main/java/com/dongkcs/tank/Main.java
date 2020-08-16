@@ -16,6 +16,7 @@ public class Main {
         for (int i=0;i<5;i++){
             tf.enemy.add(new Tank(50+i*80,200,Dir.DOWN,Group.BAD,tf));
         }
+
         while (true){
             Thread.sleep(30);
             tf.repaint();
