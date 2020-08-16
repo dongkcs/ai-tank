@@ -19,7 +19,7 @@ public class Explode {
     private int x,y;
 
     private TankFrame tf= null;
-    private  boolean living = true;
+//    private  boolean living = true;
 
     private  int step=0;
 
@@ -34,7 +34,7 @@ public class Explode {
     public void paint(Graphics g) {
         g.drawImage(ResourceMgr.explodes[step++],x,y,null);
         if(step>=ResourceMgr.explodes.length) {
-            step = 0;
+            tf.explodes.remove(this);
         }
     }
 
@@ -44,7 +44,4 @@ public class Explode {
 
 
 
-    private void die() {
-        this.living=false;
-    }
 }
