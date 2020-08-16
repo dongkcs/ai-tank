@@ -102,15 +102,19 @@ public class TankFrame extends Frame {
             switch (key) {
                 case KeyEvent.VK_LEFT:
                     bL = false;
+                    setMainTrankDir();
                     break;
                 case KeyEvent.VK_UP:
                     bU = false;
+                    setMainTrankDir();
                     break;
                 case KeyEvent.VK_RIGHT:
                     bR = false;
+                    setMainTrankDir();
                     break;
                 case KeyEvent.VK_DOWN:
                     bD = false;
+                    setMainTrankDir();
                     break;
                 case KeyEvent.VK_CONTROL:
                     myTank.fire();
@@ -126,7 +130,7 @@ public class TankFrame extends Frame {
                 myTank.setMoving(false);
 
             }else {
-                myTank.setMoving(true);
+
                 if(bL)
                 {
                     myTank.setDir(Dir.LEFT);
@@ -143,6 +147,7 @@ public class TankFrame extends Frame {
                 {
                     myTank.setDir(Dir.DOWN);
                 }
+                myTank.setMoving(true);
             }
         }
     }
