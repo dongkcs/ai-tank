@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Generated;
 
 import java.awt.*;
+import java.util.Random;
 
 /**
  * @author dongkcs
@@ -26,6 +27,7 @@ public class Tank {
     private boolean living = true;
     private Group group= Group.BAD;
     private TankFrame tf = null;
+    private Random random=new Random();
 
     public Tank(int x, int y, Dir dir,Group group, TankFrame tf) {
         this.x = x;
@@ -81,6 +83,9 @@ public class Tank {
                 break;
             default:
                 break;
+        }
+        if(random.nextInt()>8){
+            this.fire();
         }
     }
 
